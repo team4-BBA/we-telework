@@ -4,23 +4,23 @@ export interface FooterProps {}
 
 const Footer: React.SFC<FooterProps> = () => {
   return (
-    <div style={{ textAlign: 'right' }}>
-      {/* <!-- Rakuten Web Services Attribution Snippet FROM HERE --> */}
-      <a
-        href="https://webservice.rakuten.co.jp/"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <img
-          src="https://webservice.rakuten.co.jp/img/credit/200709/credit_22121.gif"
-          // border="0"
-          alt="楽天ウェブサービスセンター"
-          title="楽天ウェブサービスセンター"
-          width="221"
-          height="21"
-        />
-      </a>
-      {/* <!-- Rakuten Web Services Attribution Snippet TO HERE --> */}
+    <div
+      style={{
+        position: 'fixed',
+        bottom: 0,
+        width: '100vw',
+        background: 'orange',
+        padding: 0,
+        margin: 0,
+        height: '7vh',
+        display: 'flex',
+        justifyContent: 'stretch'
+      }}
+    >
+      <div style={{ border: '1px solid grey', flex: 1 }}>トップ</div>
+      <div style={{ border: '1px solid grey', flex: 1 }}>さがす</div>
+      <div style={{ border: '1px solid grey', flex: 1 }}>おしゃべり</div>
+      <div style={{ border: '1px solid grey', flex: 1 }}>マイページ</div>
     </div>
   )
 }

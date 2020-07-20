@@ -29,7 +29,7 @@ const App = () => {
       }
       setLoading(false)
     })
-  })
+  }, [])
 
   if (isLoading) {
     return <div>loading...</div>
@@ -66,6 +66,7 @@ const App = () => {
           </Switch>
         </BrowserRouter>
       </div>
+      <div style={{ height: '8vh' }} />
       <Footer />
     </div>
   )
