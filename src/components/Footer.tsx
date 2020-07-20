@@ -4,7 +4,7 @@ export interface FooterProps {}
 
 const Footer: React.SFC<FooterProps> = () => {
   return (
-    <div style={{ textAlign: 'center' }}>
+    <div style={{ textAlign: 'right' }}>
       {/* <!-- Rakuten Web Services Attribution Snippet FROM HERE --> */}
       <a
         href="https://webservice.rakuten.co.jp/"
