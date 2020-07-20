@@ -11,3 +11,12 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+:not(input, textarea) {
+  -webkit-user-select: none;
+}
+
+* {
+  overflow-wrap: anywhere;
+  overflow-x: hidden;
+}
