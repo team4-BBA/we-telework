@@ -15,6 +15,7 @@ import 'firebase/auth'
 import AuthContextProvider, { AuthContext } from './contexts/AuthContext'
 import Auth from './components/Auth'
 import Top from './screens/Top'
+import Profile from './screens/Profile'
 
 const App = () => {
   const { user, setUser, isLoading, setLoading } = useContext(AuthContext)
@@ -50,6 +51,7 @@ const App = () => {
                 <Route exact path="/detail/:id/applied" component={Applied} />
                 <Route exact path="/register" component={Register} />
                 <Route exact path="/registered" component={Registered} />
+                <Route exact path="/profile" component={Profile} />
                 <Route
                   exact
                   path="/profile/register"
@@ -64,10 +66,10 @@ const App = () => {
               </Switch>
             </Auth>
           </Switch>
+          <div style={{ height: '8vh' }} />
+          <Footer />
         </BrowserRouter>
       </div>
-      <div style={{ height: '8vh' }} />
-      <Footer />
     </div>
   )
 }
