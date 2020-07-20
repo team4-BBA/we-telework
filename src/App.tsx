@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import SignIn from './screens/SignIn'
 import RecommendHotels from './screens/RecommendHotels'
@@ -9,10 +9,29 @@ import Register from './screens/Register'
 import Registered from './screens/Registered'
 import ProfileRegister from './screens/ProfileRegister'
 import ProfileRegistered from './screens/ProfileRegistered'
+import Footer from './components/Footer'
+import firebase from './constants/firebase'
+import 'firebase/auth'
 
-function App() {
+const App = () => {
+  const [isLoading, setLoading] = useState(true)
+  const [user, setUser] = useState(null)
+  const [signInSuccessOpen, setSignInSuccessOpen] = useState(false)
+
+  useEffect(() => {
+    firebase.auth().onAuthStateChanged((user: any) => {
+      if (user) {
+        setUser(user)
+        console.log(`successfully logged in!`)
+      } else {
+        setUser(null)
+      }
+      setLoading(false)
+    })
+  })
+
   return (
-    <div className="App">
+    <div className="App" style={{ minHeight: '100vh', maxWidth: '100vw' }}>
       <Navbar />
       <BrowserRouter>
         <Switch>
@@ -30,6 +49,7 @@ function App() {
           />
         </Switch>
       </BrowserRouter>
+      <Footer />
     </div>
   )
 }

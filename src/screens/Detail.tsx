@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useHistory, Link, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import axios from 'axios'
 import { appID } from '../constants/RakutenAPI'
 
@@ -7,7 +7,6 @@ export interface Hotel1Props {}
 
 export const Detail = () => {
   const [basic, setBasic]: [any, any] = useState([])
-  const history = useHistory()
   let { id } = useParams()
   console.log(id)
 
@@ -21,11 +20,7 @@ export const Detail = () => {
         console.log(data)
         setBasic(data.hotels[0].hotel[0].hotelBasicInfo)
       })
-  }, [])
-
-  const gotoApplied = () => {
-    history.push('/recommends/hotel1/applied')
-  }
+  }, []) // eslint-disable-line
 
   return (
     <div>
