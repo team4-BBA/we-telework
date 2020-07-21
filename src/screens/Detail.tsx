@@ -8,7 +8,6 @@ export interface Hotel1Props {}
 export const Detail = () => {
   const [basic, setBasic]: [any, any] = useState([])
   let { id } = useParams()
-  console.log(id)
 
   useEffect(() => {
     axios
@@ -17,7 +16,6 @@ export const Detail = () => {
         { params: { applicationId: appID, format: 'json', hotelNo: id } }
       )
       .then(({ data }) => {
-        console.log(data)
         setBasic(data.hotels[0].hotel[0].hotelBasicInfo)
       })
   }, []) // eslint-disable-line

@@ -23,7 +23,6 @@ const RecommendHotels: React.SFC<RecommendHotelsProps> = () => {
         }
       )
       .then(({ data }) => {
-        console.log(data.hotels)
         setHotels(data.hotels)
       })
   }, [])

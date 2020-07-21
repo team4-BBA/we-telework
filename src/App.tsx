@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useEffect, useContext } from 'react'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import SignIn from './screens/SignIn'
 import RecommendHotels from './screens/RecommendHotels'
@@ -17,8 +17,10 @@ import Auth from './components/Auth'
 import Top from './screens/Top'
 import Profile from './screens/Profile'
 
+/* eslint react-hooks/exhaustive-deps:0 */
+
 const App = () => {
-  const { user, setUser, isLoading, setLoading } = useContext(AuthContext)
+  const { setUser, isLoading, setLoading } = useContext(AuthContext)
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user: any) => {

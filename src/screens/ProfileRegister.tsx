@@ -2,6 +2,7 @@ import React, { useLayoutEffect } from 'react'
 import { Link } from 'react-router-dom'
 import * as d3 from 'd3'
 
+/* eslint react-hooks/exhaustive-deps:0 */
 export interface ProfileRegisterProps {}
 
 const ProfileRegister: React.SFC<ProfileRegisterProps> = () => {
@@ -75,22 +76,22 @@ const ProfileRegister: React.SFC<ProfileRegisterProps> = () => {
   }
 
   // 5. ドラッグ時のイベント関数
-  function dragstarted(d: any) {
-    if (!d3.event.active) simulation.alphaTarget(0.3).restart()
-    d.fx = d.x
-    d.fy = d.y
-  }
+  // function dragstarted(d: any) {
+  //   if (!d3.event.active) simulation.alphaTarget(0.3).restart()
+  //   d.fx = d.x
+  //   d.fy = d.y
+  // }
 
-  function dragged(d: any) {
-    d.fx = d3.event.x
-    d.fy = d3.event.y
-  }
+  // function dragged(d: any) {
+  //   d.fx = d3.event.x
+  //   d.fy = d3.event.y
+  // }
 
-  function dragended(d: any) {
-    if (!d3.event.active) simulation.alphaTarget(0)
-    d.fx = null
-    d.fy = null
-  }
+  // function dragended(d: any) {
+  //   if (!d3.event.active) simulation.alphaTarget(0)
+  //   d.fx = null
+  //   d.fy = null
+  // }
 
   return (
     <div style={{ height: '100%' }}>

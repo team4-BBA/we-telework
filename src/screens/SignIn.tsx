@@ -8,6 +8,8 @@ import 'firebaseui-ja/dist/firebaseui.css'
 const firebaseui = require('firebaseui-ja')
 export interface SignInProps {}
 
+/* eslint react-hooks/exhaustive-deps:0 */
+
 const SignIn: React.SFC<SignInProps> = () => {
   const history = useHistory()
   const { user, isLoading } = useContext(AuthContext)
@@ -48,8 +50,6 @@ const SignIn: React.SFC<SignInProps> = () => {
   }
 
   const signInWithEmailAndPassword = () => {
-    console.log('ろぐいんするよ！')
-    console.log(mail, pass)
     if (mail === '') {
       alert('メールアドレスを入力してください')
       return

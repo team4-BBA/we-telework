@@ -17,7 +17,7 @@ const Top: React.SFC<TopProps> = () => {
         setUser(null)
       })
       .catch((error) => {
-        alert('ログアウトできず')
+        alert(`ログアウトできず: ${error}`)
       })
   }
 
