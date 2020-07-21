@@ -14,7 +14,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [10.x, 12.x]
+        node-version: [12.x]
 
     steps:
       - name: Checkout Repo
@@ -45,11 +45,9 @@ jobs:
         with:
           name: build
           path: build
-      - name: debug
-        run: ls && ls build
       - name: Deploy to Firebase (only hosting)
         uses: w9jds/firebase-action@master
         with:
-          args: deploy --only hosting --project production
+          args: deploy --only hosting
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}

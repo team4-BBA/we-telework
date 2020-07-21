@@ -17,7 +17,7 @@ const Auth = (props: any) => {
     return children
   } else {
     if (!pathnames.includes(location.pathname)) {
-      return <div>404やで</div>
+      return <div>404もしくはログインしてないやで</div>
     } else {
       return <Redirect to="/signin" />
     }
