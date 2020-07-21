@@ -19,12 +19,20 @@ const SignIn: React.SFC<SignInProps> = () => {
   const [ui, setUi]: [any, any] = useState<any>(null)
 
   useEffect(() => {
-    if (didMount && !ui) setUi(new firebaseui.auth.AuthUI(firebase.auth()))
+    if (didMount && !ui)
+      setUi(
+        firebaseui.auth.AuthUI.getInstance() ||
+          new firebaseui.auth.AuthUI(firebase.auth())
+      )
   }, [isLoading])
 
   useEffect(() => {
     setDidMount(true)
-    if (!isLoading && !ui) setUi(new firebaseui.auth.AuthUI(firebase.auth()))
+    if (!isLoading && !ui)
+      setUi(
+        firebaseui.auth.AuthUI.getInstance() ||
+          new firebaseui.auth.AuthUI(firebase.auth())
+      )
     if (!isLoading && !!ui) uiStart()
   }, [])
 
