@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import '../static/css/SignIn.css'
 import { useHistory, Link, Redirect } from 'react-router-dom'
 import { AuthContext } from '../contexts/AuthContext'
-import firebase from '../constants/firebase'
+import firebase, { provider } from '../constants/firebase'
 import 'firebase/auth'
 import 'firebaseui-ja/dist/firebaseui.css'
 const firebaseui = require('firebaseui-ja')
@@ -19,20 +19,12 @@ const SignIn: React.SFC<SignInProps> = () => {
   const [ui, setUi]: [any, any] = useState<any>(null)
 
   useEffect(() => {
-    if (didMount && !ui)
-      setUi(
-        firebaseui.auth.AuthUI.getInstance() ||
-          new firebaseui.auth.AuthUI(firebase.auth())
-      )
+    if (didMount && !ui) setUi(firebaseui.auth.AuthUI.getInstance() || new firebaseui.auth.AuthUI(firebase.auth()))
   }, [isLoading])
 
   useEffect(() => {
     setDidMount(true)
-    if (!isLoading && !ui)
-      setUi(
-        firebaseui.auth.AuthUI.getInstance() ||
-          new firebaseui.auth.AuthUI(firebase.auth())
-      )
+    if (!isLoading && !ui) setUi(firebaseui.auth.AuthUI.getInstance() || new firebaseui.auth.AuthUI(firebase.auth()))
     if (!isLoading && !!ui) uiStart()
   }, [])
 
@@ -50,10 +42,14 @@ const SignIn: React.SFC<SignInProps> = () => {
 
   const uiStart = () => {
     ui.start('#firebaseui-auth-container', {
+      // signInFlow: 'popup',
       signInSuccessUrl: '/signin',
-      signInOptions: [firebase.auth.GoogleAuthProvider.PROVIDER_ID],
-      tosUrl: '<your-tos-url>',
-      privacyPolicyUrl: '/policy'
+      signInOptions: [
+        firebase.auth.GoogleAuthProvider.PROVIDER_ID
+        // firebase.auth.TwitterAuthProvider.PROVIDER_ID
+      ]
+      // tosUrl: '<your-tos-url>',
+      // privacyPolicyUrl: '/policy'
     })
   }
 
@@ -68,33 +64,30 @@ const SignIn: React.SFC<SignInProps> = () => {
     history.push('/recommends')
   }
 
+  const signInWithTwitter = () => {
+    firebase.auth().signInWithRedirect(provider)
+  }
+
   return (
     <div className="loginContainer" style={{ border: '1px solid green' }}>
       ログインしてね！
       <div id="firebaseui-auth-container"></div>
+      <p>
+        <button onClick={signInWithTwitter}>ツイッターでログイン</button>
+      </p>
       <form onSubmit={signInWithEmailAndPassword}>
         <table>
           <tbody>
             <tr>
               <td>メールアドレス</td>
               <td>
-                <input
-                  type="text"
-                  id="email"
-                  onChange={(e) => setMail(e.target.value)}
-                  value={mail}
-                />
+                <input type="text" id="email" onChange={(e) => setMail(e.target.value)} value={mail} />
               </td>
             </tr>
             <tr>
               <td>パスワード</td>
               <td>
-                <input
-                  type="password"
-                  id="password"
-                  onChange={(e) => setPass(e.target.value)}
-                  value={pass}
-                />
+                <input type="password" id="password" onChange={(e) => setPass(e.target.value)} value={pass} />
               </td>
             </tr>
           </tbody>
