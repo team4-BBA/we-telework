@@ -30,22 +30,22 @@ const handleRedirectFromTwitter = () => {
       if (result.credential) {
         // This gives you a the Twitter OAuth 1.0 Access Token and Secret.
         // You can use these server side with your app's credentials to access the Twitter API.
-        var token = result.credential.accessToken
-        var secret = result.credential.secret
+        // var token = result.credential.accessToken
+        // var secret = result.credential.secret
         // ...
       }
       // The signed-in user info.
-      var user = result.user
+      // var user = result.user
     })
     .catch((error) => {
       console.error(error)
       // Handle Errors here.
-      var errorCode = error.code
-      var errorMessage = error.message
+      // var errorCode = error.code
+      // var errorMessage = error.message
       // The email of the user's account used.
-      var email = error.email
+      // var email = error.email
       // The firebase.auth.AuthCredential type that was used.
-      var credential = error.credential
+      // var credential = error.credential
       // ...
     })
 }
