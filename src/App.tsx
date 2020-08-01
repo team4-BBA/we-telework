@@ -1,7 +1,8 @@
 import React, { useEffect, useContext } from 'react'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import CircularProgress from '@material-ui/core/CircularProgress'
 import SignIn from './screens/SignIn'
-import RecommendHotels from './screens/RecommendHotels'
+import Search from './screens/Search'
 import Navbar from './components/Navbar'
 import Detail from './screens/Detail'
 import Applied from './screens/Applied'
@@ -19,6 +20,7 @@ import Profile from './screens/Profile'
 import { User, Observer } from 'firebase'
 import { mainColor } from './constants/colors'
 import Result from './screens/result'
+import Community from './screens/Community'
 
 /* eslint react-hooks/exhaustive-deps:0 */
 
@@ -69,7 +71,27 @@ const App = () => {
   }, [])
 
   if (isLoading) {
-    return <div>loading...</div>
+    return (
+      <div
+        className="Loading"
+        style={{
+          textAlign: 'center',
+          position: 'absolute',
+          top: '0',
+          right: '0',
+          bottom: '0',
+          left: '0',
+          margin: 'auto',
+          width: '80%',
+          height: '3.2rem'
+        }}
+      >
+        <p>
+          <CircularProgress color="secondary" />
+        </p>
+        <p>loading...</p>
+      </div>
+    )
   }
 
   return (
@@ -83,7 +105,7 @@ const App = () => {
             <Auth>
               <Switch>
                 <Route exact path="/" component={Top} />
-                <Route exact path="/recommends" component={RecommendHotels} />
+                <Route exact path="/search" component={Search} />
                 <Route exact path="/detail/:id" component={Detail} />
                 <Route exact path="/detail/:id/applied" component={Applied} />
                 <Route exact path="/register" component={Register} />
@@ -92,6 +114,7 @@ const App = () => {
                 <Route exact path="/profile/register" component={ProfileRegister} />
                 <Route exact path="/profile/registered" component={ProfileRegistered} />
                 <Route exact path="/result" component={Result} />
+                <Route exact path="/community" component={Community} />
                 <Route render={() => <div>404</div>} status={404} />
               </Switch>
             </Auth>

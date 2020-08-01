@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { Redirect, useLocation } from 'react-router-dom'
 import { AuthContext } from '../hooks/contexts/AuthContext'
 
-const pathnames: Array<string> = ['/', 'recommends']
+const pathnames: Array<string> = ['/', '/search']
 
 const Auth = (props: any) => {
   const location = useLocation()
