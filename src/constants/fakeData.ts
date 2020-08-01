@@ -13,24 +13,78 @@ export const fakeData = [
     x: 800 * Math.random(),
     y: 600 * Math.random(),
     r: 30,
-    text: 'Aリゾート'
+    text: '和風'
   },
   {
     x: 800 * Math.random(),
     y: 600 * Math.random(),
     r: 30,
-    text: 'AAリゾート'
+    text: '洋風'
   },
   {
     x: 800 * Math.random(),
     y: 600 * Math.random(),
     r: 30,
-    text: 'AAAAリゾート'
+    text: '山'
   },
   {
     x: 800 * Math.random(),
     y: 600 * Math.random(),
     r: 30,
-    text: 'AAAAAAAリゾート'
+    text: '海'
+  },
+  {
+    x: 800 * Math.random(),
+    y: 600 * Math.random(),
+    r: 30,
+    text: '海'
+  },
+  {
+    x: 800 * Math.random(),
+    y: 600 * Math.random(),
+    r: 30,
+    text: '海'
+  },
+  {
+    x: 800 * Math.random(),
+    y: 600 * Math.random(),
+    r: 30,
+    text: '海'
+  },
+  {
+    x: 800 * Math.random(),
+    y: 600 * Math.random(),
+    r: 30,
+    text: '海'
+  },
+  {
+    x: 800 * Math.random(),
+    y: 600 * Math.random(),
+    r: 30,
+    text: '海'
+  },
+  {
+    x: 800 * Math.random(),
+    y: 600 * Math.random(),
+    r: 30,
+    text: '海'
+  },
+  {
+    x: 800 * Math.random(),
+    y: 600 * Math.random(),
+    r: 30,
+    text: '海'
+  },
+  {
+    x: 800 * Math.random(),
+    y: 600 * Math.random(),
+    r: 30,
+    text: '海'
+  },
+  {
+    x: 800 * Math.random(),
+    y: 600 * Math.random(),
+    r: 30,
+    text: '海'
   }
 ]

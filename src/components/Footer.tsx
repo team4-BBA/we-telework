@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useContext } from 'react'
 import { useHistory, useLocation } from 'react-router-dom'
 import BottomNavigation from '@material-ui/core/BottomNavigation'
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction'
@@ -26,7 +26,8 @@ const Footer: React.FC<FooterProps> = () => {
         padding: 0,
         margin: 0,
         height: '8vh',
-        overflowY: 'hidden'
+        overflowY: 'hidden',
+        fontSize: '14px'
       }}
     >
       <BottomNavigation
@@ -36,11 +37,13 @@ const Footer: React.FC<FooterProps> = () => {
         }}
         showLabels
         // className={classes.root}
+        // style={{
+        //   fontSize: '14px',
+        // }}
       >
         <BottomNavigationAction label="Top" icon={<HomeIcon />} onClick={() => history.push('/')} />
         <BottomNavigationAction label="Search" icon={<SearchIcon />} onClick={() => history.push('/search')} />
-        <BottomNavigationAction label="Community" icon={<ForumIcon />} onClick={() => history.push('/register')} />
-        {/* registerは暫定！ */}
+        <BottomNavigationAction label="Community" icon={<ForumIcon />} onClick={() => history.push('/community')} />
         <BottomNavigationAction label="MyPage" icon={<AccountCircleIcon />} onClick={() => history.push('/profile')} />
       </BottomNavigation>
     </div>

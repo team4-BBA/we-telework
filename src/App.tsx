@@ -1,5 +1,6 @@
 import React, { useEffect, useContext } from 'react'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import CircularProgress from '@material-ui/core/CircularProgress'
 import SignIn from './screens/SignIn'
 import Search from './screens/Search'
 import Navbar from './components/Navbar'
@@ -19,6 +20,7 @@ import Profile from './screens/Profile'
 import { User, Observer } from 'firebase'
 import { mainColor } from './constants/colors'
 import Result from './screens/result'
+import Community from './screens/Community'
 
 /* eslint react-hooks/exhaustive-deps:0 */
 
@@ -69,7 +71,14 @@ const App = () => {
   }, [])
 
   if (isLoading) {
-    return <div>loading...</div>
+    return (
+      <div className="Loading">
+        <p>
+          <CircularProgress color="secondary" />
+        </p>
+        loading...
+      </div>
+    )
   }
 
   return (
@@ -92,6 +101,7 @@ const App = () => {
                 <Route exact path="/profile/register" component={ProfileRegister} />
                 <Route exact path="/profile/registered" component={ProfileRegistered} />
                 <Route exact path="/result" component={Result} />
+                <Route exact path="/community" component={Community} />
                 <Route render={() => <div>404</div>} status={404} />
               </Switch>
             </Auth>

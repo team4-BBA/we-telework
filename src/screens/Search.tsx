@@ -3,13 +3,15 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { appID } from '../constants/RakutenAPI'
 import Calendar from 'react-calendar'
+// import Typography from '@material-ui/core/Typography'
 import Slider from '@material-ui/core/Slider'
 import 'react-calendar/dist/Calendar.css'
 import { FormGroup, FormControlLabel, Checkbox } from '@material-ui/core'
 import Button from '@material-ui/core/Button'
 import SearchIcon from '@material-ui/icons/Search'
-import { createMuiTheme, createStyles, withStyles, makeStyles, Theme, ThemeProvider } from '@material-ui/core/styles'
+import { withStyles, makeStyles, Theme } from '@material-ui/core/styles'
 import { useHistory } from 'react-router-dom'
+
 export interface SearchProps {}
 
 const useStyles = makeStyles({
@@ -58,9 +60,11 @@ const Search: React.SFC<SearchProps> = () => {
       })
   }, [])
 
-  function valuetext(value: any) {
+  function valuetext(value: number) {
     return `${value}°C`
   }
+  // export default function RangeSlider() {
+  // const [value, setValue] = React.useState<number[]>([20, 37])
 
   // const hotelLists = hotels.length
   //   ? hotels.map((hotel: any, i: number) => {
@@ -116,6 +120,9 @@ const Search: React.SFC<SearchProps> = () => {
       <div>
         <h5>価格帯を選ぶ</h5>
         <div className={classes.root}>
+          {/* <Typography id="range-slider" gutterBottom>
+            Temperature range
+          </Typography> */}
           <Slider
             min={0}
             max={100000}

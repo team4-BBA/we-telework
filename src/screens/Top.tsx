@@ -1,14 +1,16 @@
-import React, { useContext } from 'react'
-import { AuthContext } from '../hooks/contexts/AuthContext'
-import { Link, useHistory } from 'react-router-dom'
+import React from 'react'
+// import { AuthContext } from '../hooks/contexts/AuthContext'
+import { useHistory } from 'react-router-dom'
 import Button from '@material-ui/core/Button'
 import TextField from '@material-ui/core/TextField'
 import Roten from '../static/img/roten.jpg'
 import Goto from '../static/img/goto.jpg'
+import Hoshinoya from '../static/img/hoshinoya.jpg'
+import Kenmin from '../static/img/kenmin.jpg'
 import SearchIcon from '@material-ui/icons/Search'
 // import { makeStyles } from '@material-ui/core'
-import { createMuiTheme, createStyles, withStyles, makeStyles, Theme, ThemeProvider } from '@material-ui/core/styles'
-import { green, purple } from '@material-ui/core/colors'
+import { withStyles, Theme } from '@material-ui/core/styles'
+// import { green, purple } from '@material-ui/core/colors'
 export interface TopProps {}
 
 const ColorButton = withStyles((theme: Theme) => ({
@@ -42,13 +44,10 @@ const Top: React.SFC<TopProps> = () => {
           <img src={Goto} alt="" />
         </li>
         <li>
-          <img src={Goto} alt="" />
+          <img src={Hoshinoya} alt="" />
         </li>
         <li>
-          <img src={Goto} alt="" />
-        </li>
-        <li>
-          <img src={Goto} alt="" />
+          <img src={Kenmin} alt="" />
         </li>
       </ul>
       <div className="spacer1" />
@@ -106,7 +105,7 @@ const Top: React.SFC<TopProps> = () => {
           </Button>
         </div>
       </p>
-      {/* 検索画面を作ってつなぐ？　せんでもええか */}
+      {/* 検索画面を作ってつながない */}
 
       <div style={{ textAlign: 'right' }}>
         {/* <!-- Rakuten Web Services Attribution Snippet FROM HERE --> */}
