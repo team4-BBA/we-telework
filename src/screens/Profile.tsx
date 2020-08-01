@@ -1,15 +1,19 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
+import { AuthContext } from '../hooks/contexts/AuthContext'
 
 export interface ProfileProps {}
 
-const Profile: React.SFC<ProfileProps> = () => {
+const Profile: React.FC<ProfileProps> = () => {
+  const { user } = useContext(AuthContext)
   return (
-    <div>
+    <div style={{ width: '95%', margin: '0 auto' }}>
       プロフィール画面やで
-      <p>
+      <div>
         <Link to="profile/register">趣味趣向を登録する</Link>
-      </p>
+        <button onClick={() => console.log(user)}>user</button>
+        <p>名前: {user.displayName && user.displayName}</p>
+      </div>
     </div>
   )
 }

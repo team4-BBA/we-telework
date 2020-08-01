@@ -11,10 +11,9 @@ export const Detail = () => {
 
   useEffect(() => {
     axios
-      .get(
-        'https://app.rakuten.co.jp/services/api/Travel/HotelDetailSearch/20170426',
-        { params: { applicationId: appID, format: 'json', hotelNo: id } }
-      )
+      .get('https://app.rakuten.co.jp/services/api/Travel/HotelDetailSearch/20170426', {
+        params: { applicationId: appID, format: 'json', hotelNo: id }
+      })
       .then(({ data }) => {
         setBasic(data.hotels[0].hotel[0].hotelBasicInfo)
       })
@@ -22,11 +21,9 @@ export const Detail = () => {
 
   return (
     <div>
-      <p>
-        {/* <Link to={`/detail/${hotels[0].hotel[0].hotelBasicInfo.hotelNo}`}> */}
-        <button>申し込み</button>
-        {/* </Link> */}
-      </p>
+      <p>{/* <Link to={`/detail/${hotels[0].hotel[0].hotelBasicInfo.hotelNo}/applied`}>
+          <button>申し込み</button>
+        </Link> */}</p>
       <button onClick={() => console.log(basic)}>basic</button>
       {basic.length ? <h2>{basic.hotelName}</h2> : null}
     </div>

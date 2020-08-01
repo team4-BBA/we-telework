@@ -1,0 +1,10 @@
+.navtitle {
+  /* display: flex; */
+  height: 3em;
+  background-color: orange;
+  text-align: center;
+}
+.titleImage {
+  object-fit: contain;
+  height: 90%;
+}
