@@ -8,7 +8,7 @@ const ProfileRegistered: React.SFC<ProfileRegisteredProps> = () => {
     <div>
       <p>プロフィールを登録しました！</p>
       <p>
-        <Link to={`/recommends`}>
+        <Link to={`/search`}>
           <button>ホーム画面へ</button>
         </Link>
       </p>

@@ -31,6 +31,32 @@ const ProfileRegister: React.SFC<ProfileRegisterProps> = () => {
       .on('click', (d) => console.log(d))
       .style('cursor', 'pointer')
 
+    node
+      .append('text')
+      .attr('x', function (d: any) {
+        // return d.x
+        return 50
+      })
+      .attr('y', function (d: any) {
+        return 50
+        // return d.y
+      })
+      .attr('text-anchor', 'middle')
+      .attr('dominant-baseline', 'middle')
+      .style('fill', '#000')
+      .text(function (d: any) {
+        return d.text
+      })
+      .append('title')
+      .text(function (d: any) {
+        return d.text
+      })
+    // node.append('title')
+    // .text((d) => 'wwww')
+    // .text((d) => {
+    //   return d.text
+    // })
+
     // 3. forceSimulation設定
     simulation = d3
       .forceSimulation()

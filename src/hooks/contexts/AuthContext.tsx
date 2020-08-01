@@ -46,13 +46,16 @@ const AuthContext = createContext<any>(undefined)
 const AuthContextProvider: any = (props: any): JSX.Element => {
   const [user, setUser] = useState<any>(null)
   const [isLoading, setLoading] = useState(true)
+  const [bottomNav, setBottomNav] = useState(0)
   return (
     <AuthContext.Provider
       value={{
         user,
         setUser,
         isLoading,
-        setLoading
+        setLoading,
+        bottomNav,
+        setBottomNav
       }}
     >
       {props.children}

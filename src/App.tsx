@@ -1,7 +1,7 @@
 import React, { useEffect, useContext } from 'react'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import SignIn from './screens/SignIn'
-import RecommendHotels from './screens/RecommendHotels'
+import Search from './screens/Search'
 import Navbar from './components/Navbar'
 import Detail from './screens/Detail'
 import Applied from './screens/Applied'
@@ -83,7 +83,7 @@ const App = () => {
             <Auth>
               <Switch>
                 <Route exact path="/" component={Top} />
-                <Route exact path="/recommends" component={RecommendHotels} />
+                <Route exact path="/search" component={Search} />
                 <Route exact path="/detail/:id" component={Detail} />
                 <Route exact path="/detail/:id/applied" component={Applied} />
                 <Route exact path="/register" component={Register} />

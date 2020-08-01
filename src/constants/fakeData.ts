@@ -4,7 +4,10 @@ export interface Balls {
   r: number
   text: string
 }
-
+// r: 80,
+// review: 5,
+// txt: '写真がきれい！',
+// title: '写真がきれい！'
 export const fakeData = [
   {
     x: 800 * Math.random(),

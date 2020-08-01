@@ -1,23 +1,29 @@
 .sagasu {
-  background-color: red;
-  width: 70%;
+  /* background-color: #ae214b; */
+  /* width: 70%; */
+  /* padding: 1em; */
   text-align: center;
   margin: 0 auto;
-  text-decoration: none;
-  color: white;
-  border-radius: 10px;
+  text-decoration: none !important;
+  /* color: white; */
+  /* border-radius: 18px; */
+  /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.4); */
+  /* font-size: large; */
 }
-.recommend {
-  display: flex;
-  text-align: center;
+ul.recommend {
+  /* display: flex; */
+  overflow-x: scroll;
+  white-space: nowrap;
+  margin: 0 auto;
+  padding: 0;
 }
-.recommend .box {
+ul.recommend li {
+  display: inline-block;
+  list-style: none;
+}
+ul.recommend li img {
   width: 150px;
   height: 150px;
-  border-radius: 10px;
-  background-color: silver;
-  margin: 10px auto;
-}
-.form {
-  display: flex;
+  object-fit: cover;
+  margin: 40px;
 }

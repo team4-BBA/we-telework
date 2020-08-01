@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { useHistory, useLocation } from 'react-router-dom'
 import BottomNavigation from '@material-ui/core/BottomNavigation'
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction'
@@ -6,14 +6,15 @@ import HomeIcon from '@material-ui/icons/Home'
 import SearchIcon from '@material-ui/icons/Search'
 import ForumIcon from '@material-ui/icons/Forum'
 import AccountCircleIcon from '@material-ui/icons/AccountCircle'
+import { AuthContext } from '../hooks/contexts/AuthContext'
 
 export interface FooterProps {}
 
 const Footer: React.FC<FooterProps> = () => {
-  const [value, setValue] = useState(0)
   const history = useHistory()
   const location = useLocation()
-  if (location.pathname === '/signin') {
+  const { bottomNav, setBottomNav } = useContext(AuthContext)
+  if (location.pathname === '/signin' || location.pathname === '/profile/register') {
     return null
   }
   return (
@@ -29,15 +30,15 @@ const Footer: React.FC<FooterProps> = () => {
       }}
     >
       <BottomNavigation
-        value={value}
+        value={bottomNav}
         onChange={(event, newValue) => {
-          setValue(newValue)
+          setBottomNav(newValue)
         }}
         showLabels
         // className={classes.root}
       >
         <BottomNavigationAction label="Top" icon={<HomeIcon />} onClick={() => history.push('/')} />
-        <BottomNavigationAction label="Search" icon={<SearchIcon />} onClick={() => history.push('/recommends')} />
+        <BottomNavigationAction label="Search" icon={<SearchIcon />} onClick={() => history.push('/search')} />
         <BottomNavigationAction label="Community" icon={<ForumIcon />} onClick={() => history.push('/register')} />
         {/* registerは暫定！ */}
         <BottomNavigationAction label="MyPage" icon={<AccountCircleIcon />} onClick={() => history.push('/profile')} />

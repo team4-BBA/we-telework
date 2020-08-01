@@ -1,43 +1,77 @@
 import React, { useContext } from 'react'
 import { AuthContext } from '../hooks/contexts/AuthContext'
-import firebase from '../constants/firebase'
-import { Link } from 'react-router-dom'
-import '../static/css/top.css'
+import { Link, useHistory } from 'react-router-dom'
 import Button from '@material-ui/core/Button'
 import TextField from '@material-ui/core/TextField'
-
+import Roten from '../static/img/roten.jpg'
+import Goto from '../static/img/goto.jpg'
+import SearchIcon from '@material-ui/icons/Search'
+// import { makeStyles } from '@material-ui/core'
+import { createMuiTheme, createStyles, withStyles, makeStyles, Theme, ThemeProvider } from '@material-ui/core/styles'
+import { green, purple } from '@material-ui/core/colors'
 export interface TopProps {}
 
-const Top: React.SFC<TopProps> = () => {
-  const { setUser } = useContext(AuthContext)
-
-  const handleSignOut = (): any => {
-    firebase
-      .auth()
-      .signOut()
-      .then(() => {
-        console.log('ログアウトdone')
-        setUser(null)
-      })
-      .catch((error) => {
-        alert(`ログアウトできず: ${error}`)
-      })
+const ColorButton = withStyles((theme: Theme) => ({
+  root: {
+    color: 'snow',
+    backgroundColor: '#AE214B',
+    padding: '0.5rem 1.5rem',
+    fontSize: '130%',
+    borderRadius: '15px'
   }
+}))(Button)
 
+const Top: React.SFC<TopProps> = () => {
+  const history = useHistory()
   return (
-    <div>
-      <p>Top画面だよ</p>
-      <button onClick={handleSignOut}>ログアウト</button>
-      <p>あなたへのおすすめ!!!!!!!!!!</p>
-      {/* ここにrecommendの上2つの画像入れたい */}
-      <div className="recommend">
-        <div className="box"></div>
-        <div className="box"></div>
+    <div style={{ width: '95%', margin: '0 auto' }}>
+      {/* <p>Top画面だよ</p> */}
+      <p
+        style={{
+          fontWeight: 600,
+          textAlign: 'center'
+        }}
+      >
+        あなたへのおすすめ
+      </p>
+      <ul className="recommend">
+        <li>
+          <img src={Roten} alt="" />
+        </li>
+        <li>
+          <img src={Goto} alt="" />
+        </li>
+        <li>
+          <img src={Goto} alt="" />
+        </li>
+        <li>
+          <img src={Goto} alt="" />
+        </li>
+        <li>
+          <img src={Goto} alt="" />
+        </li>
+      </ul>
+      <div className="spacer1" />
+      <div className="sagasu">
+        <ColorButton
+          variant="contained"
+          color="secondary"
+          // className={classes.button}
+          endIcon={<SearchIcon />}
+          onClick={() => history.push('/search')}
+        >
+          場所を探す
+        </ColorButton>
       </div>
-      <Link to="/recommends">
-        <div className="sagasu">探す</div>
-      </Link>
-      <p>地図から探す</p>
+      <div className="spacer1" />
+      <p
+        style={{
+          fontWeight: 600
+          // textAlign: 'center'
+        }}
+      >
+        地図から探す
+      </p>
       <p>
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5192.055766076073!2d141.33115807900117!3d43.08469503790298!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f0b28fd1c5ddf91%3A0x1ffe6cdbf652dd86!2z5YyX5rW36YGT5aSn5a2mIOODleODvOODiSbjg6Hjg4fjgqPjgqvjg6vjgqTjg47jg5njg7zjgrfjg6fjg7Plm73pmpvmi6Dngrk!5e0!3m2!1sja!2sjp!4v1596253424179!5m2!1sja!2sjp"
@@ -48,11 +82,18 @@ const Top: React.SFC<TopProps> = () => {
           title="map"
         />
       </p>
-      <p>キーワードから探す</p>
-      <p className="form">
-        <div>
+      <p
+        style={{
+          fontWeight: 600
+          // textAlign: 'center'
+        }}
+      >
+        キーワードから探す
+      </p>
+      <p className="form" style={{ margin: '0 auto' }}>
+        <div style={{ margin: '0 auto' }}>
           <form>
-            <TextField id="standard-basic" label="検索" />
+            <TextField id="standard-basic" label="キーワード" />
           </form>
         </div>
         <div
@@ -65,7 +106,7 @@ const Top: React.SFC<TopProps> = () => {
           </Button>
         </div>
       </p>
-      {/* 検索画面を作ってつなぐ */}
+      {/* 検索画面を作ってつなぐ？　せんでもええか */}
 
       <div style={{ textAlign: 'right' }}>
         {/* <!-- Rakuten Web Services Attribution Snippet FROM HERE --> */}
