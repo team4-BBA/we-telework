@@ -2,9 +2,10 @@ import React, { useContext, useEffect, useState } from 'react'
 import '../static/css/SignIn.css'
 import { useHistory, Link, Redirect } from 'react-router-dom'
 import { AuthContext } from '../hooks/contexts/AuthContext'
-import firebase, { provider } from '../constants/firebase'
+import firebase from '../constants/firebase'
 import 'firebase/auth'
 import 'firebaseui-ja/dist/firebaseui.css'
+import Logo from '../static/img/logo_transparent.png'
 const firebaseui = require('firebaseui-ja')
 export interface SignInProps {}
 
@@ -42,11 +43,12 @@ const SignIn: React.SFC<SignInProps> = () => {
 
   const uiStart = () => {
     ui.start('#firebaseui-auth-container', {
-      // signInFlow: 'popup',
       signInSuccessUrl: '/signin',
       signInOptions: [
-        firebase.auth.GoogleAuthProvider.PROVIDER_ID
-        // firebase.auth.TwitterAuthProvider.PROVIDER_ID
+        firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+        firebase.auth.TwitterAuthProvider.PROVIDER_ID,
+        firebase.auth.FacebookAuthProvider.PROVIDER_ID,
+        firebase.auth.GithubAuthProvider.PROVIDER_ID
       ]
       // tosUrl: '<your-tos-url>',
       // privacyPolicyUrl: '/policy'
@@ -64,45 +66,49 @@ const SignIn: React.SFC<SignInProps> = () => {
     history.push('/recommends')
   }
 
-  const signInWithTwitter = () => {
-    firebase.auth().signInWithRedirect(provider)
-  }
+  // const signInWithTwitter = () => { //tslint-disable-line
+  //   firebase.auth().signInWithRedirect(provider)
+  // }
 
   return (
-    <div className="loginContainer" style={{ border: '1px solid green' }}>
-      ログインしてね！
-      <div id="firebaseui-auth-container"></div>
-      <p>
+    <div className="loginContainer">
+      <div style={{ width: '100%' }}>
+        <img src={Logo} alt="" style={{ width: '100%', objectFit: 'contain' }} />
+      </div>
+      <div id="firebaseui-auth-container" />
+      {/* <p>
         <button onClick={signInWithTwitter}>ツイッターでログイン</button>
-      </p>
-      <form onSubmit={signInWithEmailAndPassword}>
-        <table>
-          <tbody>
-            <tr>
-              <td>メールアドレス</td>
-              <td>
-                <input type="text" id="email" onChange={(e) => setMail(e.target.value)} value={mail} />
-              </td>
-            </tr>
-            <tr>
-              <td>パスワード</td>
-              <td>
-                <input type="password" id="password" onChange={(e) => setPass(e.target.value)} value={pass} />
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        <input
-          // className="loginbutton"
-          type="submit"
-          value="ログイン"
-        />
-      </form>
-      <p>アカウントがない方はこちら</p>
+      </p> */}
+      <small>又は</small>
       <p>
         <Link to={`/register`}>
           <button>ユーザー登録</button>
         </Link>
+      </p>
+      <p>
+        <form onSubmit={signInWithEmailAndPassword}>
+          <table>
+            <tbody>
+              <tr>
+                <td>メールアドレス</td>
+                <td>
+                  <input type="text" id="email" onChange={(e) => setMail(e.target.value)} value={mail} />
+                </td>
+              </tr>
+              <tr>
+                <td>パスワード</td>
+                <td>
+                  <input type="password" id="password" onChange={(e) => setPass(e.target.value)} value={pass} />
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <input
+            // className="loginbutton"
+            type="submit"
+            value="ログイン"
+          />
+        </form>
       </p>
     </div>
   )

@@ -1,7 +1,7 @@
 {
-  "short_name": "We Telework",
-  "name": "We Telework",
-  "description": "We Telework App",
+  "short_name": "Hotelework",
+  "name": "Hotelework",
+  "description": "Hotelework app made with react PWA",
   "icons": [
     {
       "src": "favicon.ico",
@@ -21,6 +21,6 @@
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#E55010",
-  "background_color": "#E55010"
+  "theme_color": "#faf4ea",
+  "background_color": "#faf4ea"
 }

@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
-import { useHistory } from 'react-router-dom'
-import { makeStyles } from '@material-ui/core/styles'
+import { useHistory, useLocation } from 'react-router-dom'
 import BottomNavigation from '@material-ui/core/BottomNavigation'
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction'
 import HomeIcon from '@material-ui/icons/Home'
@@ -13,6 +12,10 @@ export interface FooterProps {}
 const Footer: React.FC<FooterProps> = () => {
   const [value, setValue] = useState(0)
   const history = useHistory()
+  const location = useLocation()
+  if (location.pathname === '/signin') {
+    return null
+  }
   return (
     <div
       style={{
@@ -43,14 +46,14 @@ const Footer: React.FC<FooterProps> = () => {
   )
 }
 
-const styles = {
-  navlink: {
-    border: '1px solid grey',
-    flex: 1
-  },
-  active: {
-    backgroundColor: 'red'
-  }
-}
+// const styles = {
+//   navlink: {
+//     border: '1px solid grey',
+//     flex: 1
+//   },
+//   active: {
+//     backgroundColor: 'red'
+//   }
+// }
 
 export default Footer

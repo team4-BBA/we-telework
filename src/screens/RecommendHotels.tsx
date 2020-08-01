@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import HotelList from '../components/HotelList'
+// import HotelList from '../components/HotelList'
 import axios from 'axios'
 import { appID } from '../constants/RakutenAPI'
 import Calendar from 'react-calendar'
-import Typography from '@material-ui/core/Typography'
 import Slider from '@material-ui/core/Slider'
 import { makeStyles } from '@material-ui/core/styles'
 import 'react-calendar/dist/Calendar.css'
@@ -20,7 +19,7 @@ const useStyles = makeStyles({
 })
 
 const RecommendHotels: React.SFC<RecommendHotelsProps> = () => {
-  const [hotels, setHotels] = useState([])
+  // const [hotels, setHotels] = useState([])
   const [date_value, onChange] = useState<any>(new Date())
   const classes = useStyles()
   const [value, setValue] = React.useState([1000, 50000])
@@ -44,7 +43,7 @@ const RecommendHotels: React.SFC<RecommendHotelsProps> = () => {
         }
       })
       .then(({ data }) => {
-        setHotels(data.hotels)
+        // setHotels(data.hotels)
       })
   }, [])
 
@@ -52,11 +51,11 @@ const RecommendHotels: React.SFC<RecommendHotelsProps> = () => {
     return `${value}°C`
   }
 
-  const hotelLists = hotels.length
-    ? hotels.map((hotel: any, i: number) => {
-        return <HotelList hotel={hotel.hotel} key={i} />
-      })
-    : null
+  // const hotelLists = hotels.length
+  //   ? hotels.map((hotel: any, i: number) => {
+  //       return <HotelList hotel={hotel.hotel} key={i} />
+  //     })
+  //   : null
 
   return (
     <div

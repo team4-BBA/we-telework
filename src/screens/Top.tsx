@@ -3,7 +3,6 @@ import { AuthContext } from '../hooks/contexts/AuthContext'
 import firebase from '../constants/firebase'
 import { Link } from 'react-router-dom'
 import '../static/css/top.css'
-import { makeStyles } from '@material-ui/core/styles'
 import Button from '@material-ui/core/Button'
 import TextField from '@material-ui/core/TextField'
 
@@ -35,9 +34,9 @@ const Top: React.SFC<TopProps> = () => {
         <div className="box"></div>
         <div className="box"></div>
       </div>
-      <div className="sagasu">
-        <Link to="/recommends">探す</Link>
-      </div>
+      <Link to="/recommends">
+        <div className="sagasu">探す</div>
+      </Link>
       <p>地図から探す</p>
       <p>
         <iframe
@@ -46,6 +45,7 @@ const Top: React.SFC<TopProps> = () => {
           height="450"
           style={{ border: 0, width: '100vw', height: '40vh' }}
           aria-hidden="false"
+          title="map"
         />
       </p>
       <p>キーワードから探す</p>
