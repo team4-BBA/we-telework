@@ -72,11 +72,24 @@ const App = () => {
 
   if (isLoading) {
     return (
-      <div className="Loading">
+      <div
+        className="Loading"
+        style={{
+          textAlign: 'center',
+          position: 'absolute',
+          top: '0',
+          right: '0',
+          bottom: '0',
+          left: '0',
+          margin: 'auto',
+          width: '80%',
+          height: '3.2rem'
+        }}
+      >
         <p>
           <CircularProgress color="secondary" />
         </p>
-        loading...
+        <p>loading...</p>
       </div>
     )
   }

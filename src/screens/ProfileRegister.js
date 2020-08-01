@@ -1,84 +1,57 @@
 import React, { useLayoutEffect, useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
 import * as d3 from 'd3'
 import useWindowDimensions from '../hooks/WindowSize'
-import { Balls, fakeData } from '../constants/fakeData'
+import { fakeData } from '../constants/fakeData'
 /* eslint react-hooks/exhaustive-deps:0 */
 // export interface ProfileRegisterProps {}
 
 const ProfileRegister = () => {
-  const [selectedWords, setSelectedWords] = useState([])
+  // const [next, setNext] = useState([])
   const [words, setWords] = useState('')
-  const [turns, setTurns] = useState(1)
+  // const [turns, setTurns] = useState(1)
   const [count, setCount] = useState(1)
   const [flag, setFlag] = useState('')
   const { width, height } = useWindowDimensions()
 
-  useLayoutEffect(() => init(), [])
+  useLayoutEffect(() => init(fakeData), [])
 
   useEffect(() => {
     const colors = Array.from(d3.selectAll('g')._groups[0]).map((i) => i.children[1].style.fill)
     setCount(colors.filter((i) => i === 'red').length)
   }, [flag])
 
-  // const toggleSelect = (function () {
-  //   let currentColor
-  //   return function () {
-  //     console.log(d3.select(this)._groups[0][0].style.fill)
-  //     currentColor = d3.select(this)._groups[0][0].style.fill == 'black' ? 'red' : 'black'
-  //     console.log(count, 'count')
-  //     let newCount
-  //     if (d3.select(this)._groups[0][0].style.fill == 'black') {
-  //       console.log(count, '+1')
-  //       newCount = count + 1
-  //     } else {
-  //       newCount = count - 1
-  //       console.log(count, '-1')
-  //     }
-  //     console.log(count, count + 1, count + 2)
-  //     console.log(newCount)
-  //     setCount(newCount)
-  //     d3.select(this).style('fill', currentColor)
-  //     // console.log(Array.from(d3.selectAll('g')._groups[0]).map((item) => item.children[1].style.fill))
-  //     // console.log(d3.selectAll('g')._groups[0][0].children[1].style.fill)
-  //     // console.log(currentColor)
-  //     // if(currentColor==='black'){
-  //     // }else
-  //     console.log(d3.select(this)._groups[0][0].children[0].textContent)
-  //   }
-  // })()
   var toggleSelect = (function () {
     var currentColor
     return function () {
-      currentColor = d3.select(this)._groups[0][0].style.fill == 'black' ? 'red' : 'black'
+      currentColor = d3.select(this)._groups[0][0].style.fill === 'black' ? 'red' : 'black'
       console.log(d3.select(this)._groups[0][0].style.fill)
       d3.select(this).style('fill', currentColor)
       setFlag(Math.random())
     }
   })()
 
-  // function toggleSelect(i, j) {
-  //   console.log(i, j)
-  //   let currentColor
-  //   currentColor = d3.select(i)._groups[0][0].style.fill == 'black' ? 'red' : 'black'
-  //   console.log(d3.select(this)._groups[0][0].style.fill)
-  //     if (d3.select(this)._groups[0][0].style.fill == 'black') {
-  //       console.log(count, '+1')
-  //       newCount = count + 1
-  //     } else {
-  //       newCount = count - 1
-  //       console.log(count, '-1')
-  //     }
-  //     console.log(newCount)
+  const getSynonims = (selectedWords) => {
+    // selectedWords -> promise.all
+    return []
+  }
 
-  //   console.log(d3.select(i)._groups[0][0].style.fill)
-  //   console.log(count, 'count')
-  //   let newCount
-  // }
+  const handleNext = () => {
+    const words = Array.from(d3.selectAll('g')._groups[0]).map((i) => i)
+    const selectedWords = words.filter((i) => i.children[1].style.fill === 'red').map((i) => i.children[0].textContent)
+    console.log(selectedWords)
+    const newWords = getSynonims(selectedWords)
+    console.log(newWords)
+    setWords(selectedWords.join(''))
+    reset()
+  }
 
-  const init = () => {
-    let nodesData = fakeData
-    d3.select('svg').append('text').attr('class', 'title').attr('x', 10).attr('y', 30).text("Bubbles of customer's voice")
+  const reset = () => {
+    d3.select('svg').remove()
+  }
+
+  const init = (data) => {
+    let nodesData = data
+    d3.select('svg').append('text').attr('class', 'title').attr('x', 10).attr('y', 30).text('気に入った単語を3つ以上選ぼう')
 
     // svg要素を配置
     // callでドラッグ時のイベント関数を登録
@@ -120,22 +93,26 @@ const ProfileRegister = () => {
       .forceSimulation()
       .force(
         'collide',
-        d3.forceCollide().radius((d) => d.r)
+        d3
+          .forceCollide()
+          .radius((d) => d.r)
+          .strength(1)
+          .iterations(1)
       )
-      .force('charge', d3.forceManyBody())
+      .force('charge', d3.forceManyBody().strength(100))
       .force(
         'x',
         d3
           .forceX()
-          .strength(0.03)
+          .strength(0.015)
           .x(width / 2)
       )
       .force(
         'y',
         d3
           .forceY()
-          .strength(0.03)
-          .y(height / 2)
+          .strength(0.015)
+          .y((height * 0.6) / 2)
       )
     //radius => ノードの半径、defaultは1
     //strength => どのくらいで戻るかの係数、0.0～1.0が推奨
@@ -178,15 +155,18 @@ const ProfileRegister = () => {
     <div style={{ height: '100%' }}>
       <p>完成を待て！</p>
       <div>{count}個選択中</div>
+      <button onClick={() => console.log(words)}>words</button>
       <button onClick={() => console.log(count)}>count</button>
       <button onClick={() => setCount(count + 1)}>count++</button>
-      <div style={{ border: '2px solid blue', height: '60vh' }}>
+      <div style={{ border: '3px solid grey', borderRadius: '15px', height: '60vh' }}>
         <svg className="test" height="100%" width="100%"></svg>
       </div>
       <div>
-        <Link to={`/profile/registered`}>
-          <button disabled={count < 3}>登録</button>
-        </Link>
+        {/* <Link to={`/profile/registered`}> */}
+        <button disabled={count < 3} onClick={handleNext}>
+          登録
+        </button>
+        {/* </Link> */}
       </div>
     </div>
   )
