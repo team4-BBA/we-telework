@@ -12,11 +12,13 @@ import ProfileRegistered from './screens/ProfileRegistered'
 import Footer from './components/Footer'
 import firebase from './constants/firebase'
 import 'firebase/auth'
-import AuthContextProvider, { AuthContext } from './contexts/AuthContext'
+import AuthContextProvider, { AuthContext } from './hooks/contexts/AuthContext'
 import Auth from './components/Auth'
 import Top from './screens/Top'
 import Profile from './screens/Profile'
 import { User, Observer } from 'firebase'
+import { mainColor } from './constants/colors'
+import Result from './screens/result'
 
 /* eslint react-hooks/exhaustive-deps:0 */
 
@@ -71,10 +73,11 @@ const App = () => {
   }
 
   return (
-    <div className="App" style={{ minHeight: '100vh', maxWidth: '100vw' }}>
-      <Navbar />
+    <div className="App" style={{ minHeight: '100vh', maxWidth: '100vw', backgroundColor: mainColor }}>
       <div style={{ minHeight: '90vh' }}>
         <BrowserRouter>
+          <Navbar />
+          <div style={{ height: '3em' }}></div>
           <Switch>
             <Route exact path="/signin" component={SignIn} />
             <Auth>
@@ -88,6 +91,7 @@ const App = () => {
                 <Route exact path="/profile" component={Profile} />
                 <Route exact path="/profile/register" component={ProfileRegister} />
                 <Route exact path="/profile/registered" component={ProfileRegistered} />
+                <Route exact path="/result" component={Result} />
                 <Route render={() => <div>404</div>} status={404} />
               </Switch>
             </Auth>

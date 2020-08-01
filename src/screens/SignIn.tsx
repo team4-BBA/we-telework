@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import '../static/css/SignIn.css'
 import { useHistory, Link, Redirect } from 'react-router-dom'
-import { AuthContext } from '../contexts/AuthContext'
+import { AuthContext } from '../hooks/contexts/AuthContext'
 import firebase, { provider } from '../constants/firebase'
 import 'firebase/auth'
 import 'firebaseui-ja/dist/firebaseui.css'

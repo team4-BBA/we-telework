@@ -1,0 +1,26 @@
+.sagasu {
+  background-color: red;
+  width: 70%;
+  text-align: center;
+  margin: 0 auto;
+  text-decoration: none;
+  color: white;
+  border-radius: 10px;
+}
+.sagasu link {
+  text-decoration: none;
+}
+.recommend {
+  display: flex;
+  text-align: center;
+}
+.recommend .box {
+  width: 150px;
+  height: 150px;
+  border-radius: 10px;
+  background-color: silver;
+  margin: 10px auto;
+}
+.form {
+  display: flex;
+}
