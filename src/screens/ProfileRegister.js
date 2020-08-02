@@ -63,7 +63,7 @@ const ProfileRegister = () => {
   const handleNext = () => {
     setLoading(true)
     setTurns(turns + 1)
-    if (turns > 1) {
+    if (turns > 2) {
       // alert('サーバーに文字列を送信するで')
       console.log(words)
       setLoading(false)
@@ -113,12 +113,13 @@ const ProfileRegister = () => {
               .then((res) => {
                 console.log(res.data)
                 setHotels(JSON.stringify(res.data))
-                history.push('/result')
+                // history.push('/result')
+                history.push('/detail/1037')
               })
               .catch((e) => {
                 console.error(e)
               })
-          }, 2000)
+          }, 3000)
         }
       })
       .catch((e) => {
@@ -257,7 +258,7 @@ const ProfileRegister = () => {
       )}
       <div>{count}個選択中</div>
       <div style={{ textAlign: 'right' }}>
-        <Button variant="contained" color="primary" disabled={count < 1} onClick={handleNext}>
+        <Button variant="contained" color="primary" disabled={count < 3} onClick={handleNext}>
           次へ
         </Button>
         {/* <Button variant="contained" color="primary" disabled={count < 3} onClick={() => history.push('/detail/1037')}>

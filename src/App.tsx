@@ -83,10 +83,10 @@ const App = () => {
           left: '0',
           margin: 'auto',
           width: '80%',
-          height: '10rem'
+          height: '8rem'
         }}
       >
-        <div>
+        <div style={{ height: '5rem' }}>
           <CircularProgress color="secondary" />
         </div>
         <div>loading...</div>

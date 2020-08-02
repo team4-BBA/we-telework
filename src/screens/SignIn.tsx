@@ -7,6 +7,7 @@ import 'firebase/auth'
 import 'firebaseui-ja/dist/firebaseui.css'
 import Logo from '../static/img/logo_transparent.png'
 import Apple from '../static/img/signinwithapple.png'
+import Microsoft from '../static/img/microsoft.png'
 const firebaseui = require('firebaseui-ja')
 export interface SignInProps {}
 
@@ -45,7 +46,7 @@ const SignIn: React.SFC<SignInProps> = () => {
       signInOptions: [
         firebase.auth.GoogleAuthProvider.PROVIDER_ID,
         // firebase.auth.TwitterAuthProvider.PROVIDER_ID,
-        firebase.auth.FacebookAuthProvider.PROVIDER_ID,
+        // firebase.auth.FacebookAuthProvider.PROVIDER_ID,
         firebase.auth.GithubAuthProvider.PROVIDER_ID
       ]
       // tosUrl: '<your-tos-url>',
@@ -75,7 +76,26 @@ const SignIn: React.SFC<SignInProps> = () => {
       </div>
       <div>
         <div id="firebaseui-auth-container" />
-        <img src={Apple} alt="" style={{ width: '220px', cursor: 'pointer' }} />
+        <div
+          style={{
+            // marginTop: '5px',
+            width: '220px',
+            height: '45px',
+            cursor: 'pointer',
+            background: 'white',
+            margin: '0 auto',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            overflow: 'hidden',
+            boxShadow: '0px 0px 2px 2px lightgrey',
+            marginTop: '-15px'
+          }}
+        >
+          {/* <div style={{ height: '20px' }}></div> */}
+          <img src={Microsoft} alt="" style={{ width: '100%', objectFit: 'contain', margin: '5px 0', padding: '0px 10px' }} />
+        </div>
+        <img src={Apple} alt="" style={{ width: '220px', cursor: 'pointer', display: 'inline-block', paddingTop: 0, marginTop: '15px' }} />
       </div>
     </div>
   )

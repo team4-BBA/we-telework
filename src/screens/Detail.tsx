@@ -1,11 +1,12 @@
 // ごまかし用の画面だよ！！
 
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import { useParams, useHistory } from 'react-router-dom'
 import axios from 'axios'
 import { appID } from '../constants/RakutenAPI'
 import Button from '@material-ui/core/Button'
 import HotelList from '../components/HotelList'
+import { AuthContext } from '../hooks/contexts/AuthContext'
 
 export interface DetailProps {}
 
@@ -14,6 +15,7 @@ export const Detail = () => {
   let { id } = useParams()
   const history = useHistory()
   const [hotels, setHotels] = useState([])
+  const { setBottomNav } = useContext(AuthContext)
 
   useEffect(() => {
     axios
@@ -27,14 +29,17 @@ export const Detail = () => {
         }
       })
       .then(({ data }) => {
-        setHotels(data.hotels)
+        // setHotels(data.hotels)
+        // console.log(data.hotels.map((i: any) => ({ ...i, match: Math.random() })).sort((a: any, b: any) => b.match - a.match))
+        setHotels(data.hotels.map((i: any) => ({ ...i, match: Math.random() })).sort((a: any, b: any) => b.match - a.match))
       })
+    setBottomNav(1)
   }, [])
 
   // const [value, setValue] = React.useState<number[]>([20, 37])
   const hotelLists = hotels.length
     ? hotels.map((hotel: any, i: number) => {
-        return <HotelList hotel={hotel.hotel} key={i} />
+        return <HotelList hotel={hotel.hotel} key={i} match={hotel.match} />
       })
     : null
 
@@ -45,20 +50,25 @@ export const Detail = () => {
           <button>申し込み</button>
         </Link>
       </p> */}
-
+      <div style={{ width: '95%', margin: '0 auto' }}>
+        {' '}
+        <span style={{ fontSize: '90%', color: 'grey' }}> エリア: </span>定山渓
+      </div>
       <div
         style={{
           display: 'flex',
           flexWrap: 'wrap',
-          justifyContent: 'spaceAround'
+          justifyContent: 'spaceAround',
+          width: '95%',
+          margin: '0 auto'
         }}
       >
         {hotelLists}
       </div>
 
-      <Button variant="contained" color="secondary" onClick={() => history.push('/detail/:id/applied')}>
+      {/* <Button variant="contained" color="secondary" onClick={() => history.push('/detail/:id/applied')}>
         申し込む
-      </Button>
+      </Button> */}
       {basic.length ? <h2>{basic.hotelName}</h2> : null}
     </div>
   )
