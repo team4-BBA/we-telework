@@ -6,6 +6,7 @@ export interface RegisteredProps {}
 const Registered: React.SFC<RegisteredProps> = () => {
   return (
     <div>
+      {/* 使わないよ！ */}
       <p>登録完了しました！</p>
       <p>
         <Link to={`/`}>

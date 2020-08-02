@@ -1,10 +1,13 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { AuthContext } from '../hooks/contexts/AuthContext'
 
 export interface ResultProps {}
 
 const Result: React.FC<ResultProps> = () => {
+  const { hotels } = useContext(AuthContext)
+
   return (
-    <div>
+    <div style={{ width: '95%', margin: '0 auto' }}>
       <p>結果やで</p>
     </div>
   )

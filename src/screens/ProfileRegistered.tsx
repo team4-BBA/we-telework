@@ -6,6 +6,7 @@ export interface ProfileRegisteredProps {}
 const ProfileRegistered: React.SFC<ProfileRegisteredProps> = () => {
   return (
     <div>
+      {/* 使わないよ！ */}
       <p>プロフィールを登録しました！</p>
       <p>
         <Link to={`/search`}>

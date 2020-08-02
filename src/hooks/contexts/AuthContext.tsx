@@ -47,6 +47,7 @@ const AuthContextProvider: any = (props: any): JSX.Element => {
   const [user, setUser] = useState<any>(null)
   const [isLoading, setLoading] = useState(true)
   const [bottomNav, setBottomNav] = useState(0)
+  const [hotels, setHotels] = useState([])
   return (
     <AuthContext.Provider
       value={{
@@ -55,7 +56,9 @@ const AuthContextProvider: any = (props: any): JSX.Element => {
         isLoading,
         setLoading,
         bottomNav,
-        setBottomNav
+        setBottomNav,
+        hotels,
+        setHotels
       }}
     >
       {props.children}

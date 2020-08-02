@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 // import HotelList from '../components/HotelList'
 import axios from 'axios'
 import { appID } from '../constants/RakutenAPI'
@@ -11,6 +11,7 @@ import Button from '@material-ui/core/Button'
 import SearchIcon from '@material-ui/icons/Search'
 import { withStyles, makeStyles, Theme } from '@material-ui/core/styles'
 import { useHistory } from 'react-router-dom'
+import { AuthContext } from '../hooks/contexts/AuthContext'
 
 export interface SearchProps {}
 
@@ -31,7 +32,7 @@ const ColorButton = withStyles((theme: Theme) => ({
 }))(Button)
 
 const Search: React.SFC<SearchProps> = () => {
-  // const [hotels, setHotels] = useState([])
+  const { setBottomNav } = useContext(AuthContext)
   const [date_value, onChange] = useState<any>(new Date())
   const classes = useStyles()
   const [value, setValue] = React.useState([1000, 50000])
@@ -44,21 +45,7 @@ const Search: React.SFC<SearchProps> = () => {
   const handleChange = (event: any, newValue: number | number[]) => {
     setValue(newValue as number[])
   }
-  useEffect(() => {
-    axios
-      .get('https://app.rakuten.co.jp/services/api/Travel/SimpleHotelSearch/20170426', {
-        params: {
-          format: 'json',
-          largeClassCode: 'japan',
-          middleClassCode: 'hokkaido',
-          smallClassCode: 'jozankei',
-          applicationId: appID
-        }
-      })
-      .then(({ data }) => {
-        // setHotels(data.hotels)
-      })
-  }, [])
+  useEffect(() => setBottomNav(1), [])
 
   function valuetext(value: number) {
     return `${value}°C`
