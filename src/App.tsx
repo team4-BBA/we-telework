@@ -41,7 +41,7 @@ const handleRedirectFromTwitter = () => {
       // The signed-in user info.
       // var user = result.user
     })
-    .catch((error) => {
+    .catch((error: any) => {
       console.error(error)
       // Handle Errors here.
       // var errorCode = error.code
@@ -83,13 +83,13 @@ const App = () => {
           left: '0',
           margin: 'auto',
           width: '80%',
-          height: '3.2rem'
+          height: '10rem'
         }}
       >
-        <p>
+        <div>
           <CircularProgress color="secondary" />
-        </p>
-        <p>loading...</p>
+        </div>
+        <div>loading...</div>
       </div>
     )
   }
@@ -99,7 +99,7 @@ const App = () => {
       <div style={{ minHeight: '90vh' }}>
         <BrowserRouter>
           <Navbar />
-          <div style={{ height: '3em' }}></div>
+          <div style={{ height: '3em' }} />
           <Switch>
             <Route exact path="/signin" component={SignIn} />
             <Auth>

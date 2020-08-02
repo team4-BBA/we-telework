@@ -89,7 +89,7 @@ const Top: React.SFC<TopProps> = () => {
       >
         キーワードから探す
       </p>
-      <p className="form" style={{ margin: '0 auto' }}>
+      <div className="form" style={{ margin: '0 auto' }}>
         <div style={{ margin: '0 auto' }}>
           <form>
             <TextField id="standard-basic" label="キーワード" />
@@ -104,7 +104,7 @@ const Top: React.SFC<TopProps> = () => {
             検索
           </Button>
         </div>
-      </p>
+      </div>
       {/* 検索画面を作ってつながない */}
 
       <div style={{ textAlign: 'right' }}>
