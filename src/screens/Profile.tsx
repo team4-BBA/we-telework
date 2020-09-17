@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
-import { AuthContext } from '../hooks/contexts/AuthContext'
+import { AuthContext } from '../contexts/AuthContext'
 import firebase from '../constants/firebase'
 
 export interface ProfileProps {}

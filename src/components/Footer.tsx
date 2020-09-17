@@ -6,7 +6,7 @@ import HomeIcon from '@material-ui/icons/Home'
 import SearchIcon from '@material-ui/icons/Search'
 import ForumIcon from '@material-ui/icons/Forum'
 import AccountCircleIcon from '@material-ui/icons/AccountCircle'
-import { AuthContext } from '../hooks/contexts/AuthContext'
+import { AuthContext } from '../contexts/AuthContext'
 
 export interface FooterProps {}
 

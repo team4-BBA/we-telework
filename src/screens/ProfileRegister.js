@@ -6,7 +6,7 @@ import { fakeData } from '../constants/fakeData'
 import Button from '@material-ui/core/Button'
 import axios from 'axios'
 import CircularProgress from '@material-ui/core/CircularProgress'
-import { AuthContext } from '../hooks/contexts/AuthContext'
+import { AuthContext } from '../contexts/AuthContext'
 /* eslint react-hooks/exhaustive-deps:0 */
 // export interface ProfileRegisterProps {}
 axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*'

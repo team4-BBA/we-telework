@@ -6,8 +6,7 @@ import axios from 'axios'
 import { appID } from '../constants/RakutenAPI'
 import Button from '@material-ui/core/Button'
 import HotelList from '../components/HotelList'
-import { AuthContext } from '../hooks/contexts/AuthContext'
-
+import { AuthContext } from '../contexts/AuthContext'
 export interface DetailProps {}
 
 export const Detail = () => {

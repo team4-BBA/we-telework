@@ -11,7 +11,7 @@ import Button from '@material-ui/core/Button'
 import SearchIcon from '@material-ui/icons/Search'
 import { withStyles, makeStyles, Theme } from '@material-ui/core/styles'
 import { useHistory } from 'react-router-dom'
-import { AuthContext } from '../hooks/contexts/AuthContext'
+import { AuthContext } from '../contexts/AuthContext'
 
 export interface SearchProps {}
 

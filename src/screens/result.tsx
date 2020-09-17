@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { AuthContext } from '../hooks/contexts/AuthContext'
+import { AuthContext } from '../contexts/AuthContext'
 
 export interface ResultProps {}
 
